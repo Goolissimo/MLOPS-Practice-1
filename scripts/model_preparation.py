@@ -3,9 +3,15 @@ import scipy.stats as stats # статистические функции биб
 from sklearn.model_selection import ShuffleSplit, RandomizedSearchCV
 from sklearn.neighbors import KNeighborsRegressor # Регрессия К-Ближайших соседей от scikit-learn
 import pickle
+import numpy as np
 
-X_train = pd.read_csv('data/X_train.csv', index_col=0)
-y_Train = pd.read_csv('data/y_Train.csv', index_col=0)
+# X_train = pd.read_csv('data/X_train.csv', index_col=0)
+# y_Train = pd.read_csv('data/y_Train.csv', index_col=0)
+
+with open('data/X_train.npy', 'rb') as f:
+    X_train = np.load(f)
+with open('data/y_Train.npy', 'rb') as f:
+    y_Train = np.load(f)
 
 # словарь гиперпараметров в виде
 # обозначение гиперпараметров : из какого распределения сэмплируем

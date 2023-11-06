@@ -1,4 +1,5 @@
 import pandas as pd
+import re
 
 ### data_creation
 # Загружаем тренировочные данные
@@ -13,15 +14,15 @@ data.drop(['New_Price'], axis=1, inplace=True)
 #Засунем столбец Power в отдельный датафрейм, удалим нули, конвертируем и посчитаем среднее
 df = pd.DataFrame(data['Power'])
 df = df[df.Power != 'null bhp']
-df['Power'] = df['Power'].str.replace('[^\d\.]', '').astype('float64')
+df['Power'] = df['Power'].str.replace('[^\d\.]', '', regex=True).astype('float64')
 
 #Заменяем null bhp на наше среднее
 data['Power'] = data['Power'].str.replace('null bhp', '113')
 
 #Убираем не числовые символы и конвертируем столбцы в числовой формат
-data['Mileage'] = data['Mileage'].str.replace('[^\d\.]', '').astype('float64')
-data['Engine'] = data['Engine'].str.replace('[^\d\.]', '').astype('float64')
-data['Power'] = data['Power'].str.replace('[^\d\.]', '').astype('float64')
+data['Mileage'] = data['Mileage'].str.replace('[^\d\.]', '', regex=True).astype('float64')
+data['Engine'] = data['Engine'].str.replace('[^\d\.]', '', regex=True).astype('float64')
+data['Power'] = data['Power'].str.replace('[^\d\.]', '', regex=True).astype('float64')
 
 # Удаление выбросов
 data.drop(data[data['Kilometers_Driven'] > 100000].index, axis=0, inplace=True)

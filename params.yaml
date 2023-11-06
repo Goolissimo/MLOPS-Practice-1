@@ -1,0 +1,5 @@
+split:
+  split_ratio: 0.3
+# svr_train:
+#   epsilon: 50
+#   C: 100

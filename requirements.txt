@@ -2,3 +2,5 @@ pandas
 sckit-learn
 pickle
 scipy
+numpy
+yaml
