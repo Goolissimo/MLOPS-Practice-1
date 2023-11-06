@@ -24,18 +24,18 @@ stages:
       size: 2298
     params:
       params.yaml:
-        split.split_ratio: 0.3
+        split.split_ratio: 0.4
   model_preparation:
     cmd: python3 scripts/model_preparation.py
     deps:
     - path: data/X_train.npy
       hash: md5
-      md5: 54d1084fcec0b25f48f97b36a19056bd
-      size: 1650368
+      md5: 601883156fed739ebe37a51f553d8e5d
+      size: 1362112
     - path: data/y_Train.npy
       hash: md5
-      md5: 81f64d7df35e68f049c87ba48b1745aa
-      size: 30688
+      md5: 161711b0ec14e5c5e3b19c53991a66c4
+      size: 26320
     - path: scripts/model_preparation.py
       hash: md5
       md5: 2620385719c12d674c4240d6506c7beb
@@ -43,23 +43,23 @@ stages:
     outs:
     - path: models/model.pkl
       hash: md5
-      md5: 8be2c454e024a27aa89c1ff92022f195
-      size: 1681366
+      md5: 73751fac3d53a51f94a062029a34b051
+      size: 1388742
   model_testing:
     cmd: python3 scripts/model_testing.py
     deps:
     - path: data/X_val.npy
       hash: md5
-      md5: f6f7e7768c23442e00494e40a9815728
-      size: 707744
+      md5: 1a6c5ea4ad114837bcdf5f8d725ee55d
+      size: 908672
     - path: data/y_val.npy
       hash: md5
-      md5: 310a50f0347d58ac10b24133b45efefa
-      size: 13232
+      md5: 23fe08ae09f161a05ab37d71e4208606
+      size: 17600
     - path: models/model.pkl
       hash: md5
-      md5: 8be2c454e024a27aa89c1ff92022f195
-      size: 1681366
+      md5: 73751fac3d53a51f94a062029a34b051
+      size: 1388742
     - path: scripts/model_testing.py
       hash: md5
       md5: 0a1f6a119aafb1e385f6572cc0abda24
@@ -67,5 +67,5 @@ stages:
     outs:
     - path: evaluates/score.json
       hash: md5
-      md5: 3f0d18619e55f69b5ac94d540bac7ad6
+      md5: b1fdffe18359a5dc6417b96288ec4a22
       size: 29
